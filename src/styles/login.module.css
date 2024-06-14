@@ -1,0 +1,160 @@
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 5%;
+    gap: 20px;
+    max-width: 800px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: fit-content;
+    margin: auto;
+    width: 100%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.form>div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.form div label {
+    font-weight: bold;
+}
+
+.formDiv input {
+    height: 40px;
+    padding: 0 3px;
+    border-radius: 5px;
+    border: 2px solid rgb(211, 208, 208);
+    width: 115%;
+}
+
+.passwordContainer {
+    height: 40px;
+    padding-right: 2px;
+    border-radius: 5px;
+    border: 2px solid rgb(211, 208, 208);
+    display: flex;
+    flex-direction: row;
+    width: 115%;
+}
+
+.passwordContainer input {
+    width: 95%;
+    padding: 0 3px;
+    border: none;
+    outline: none;
+}
+
+.passwordContainer button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.loginButtonContainer {
+    align-items: center;
+    margin: 10px 0;
+}
+
+.loginButton {
+    padding: 10px;
+    width: 100px;
+    border-radius: 10px;
+    color: rgb(92, 62, 229);
+    border: none;
+}
+
+.loginButton:hover {
+    color: white;
+    background: linear-gradient(to right, rgb(163, 145, 241), rgb(102, 71, 240));
+    cursor: pointer;
+}
+
+.googleFacebookMainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.googleFacebookMainContainer p {
+    margin-bottom: 15px;
+    font-size: medium;
+    color: gray;
+    text-align: center;
+}
+
+.googleFacebookContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.googleFacebookContainer button {
+    padding: 10px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.loginGoogleButton {
+    background-color: transparent;
+    border: 2px solid gray;
+    color: red;
+}
+
+.loginFacebookButton {
+    background-color: transparent;
+    border: 2px solid gray;
+    color: blue;
+}
+
+.loginGoogleButton:hover {
+    color: white;
+    background-color: rgb(217, 73, 73);
+    cursor: pointer;
+}
+
+.loginFacebookButton:hover {
+    color: white;
+    background-color: rgb(67, 67, 195);
+    cursor: pointer;
+}
+
+.signupContainer {
+    display: flex;
+    gap: 2px;
+}
+
+.signupContainer a {
+    border: none;
+    background-color: transparent;
+    color: rgb(93, 8, 239);
+    cursor: pointer;
+}
+
+.signupContainer a:hover {
+    color: crimson;
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+}
