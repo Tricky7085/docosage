@@ -1,0 +1,125 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .main > h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .circularDivContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .outerCircleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 8px solid rgb(92, 62, 229);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background: #fff;
+  }
+  
+  .innerCircleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #f9f9f9;
+  }
+  
+  .mainCircleContainer {
+    text-align: center;
+  }
+  
+  .mainCircleContainer h3 {
+    margin: 10px 0;
+    font-size: 32px;
+  }
+  
+  .mainCircleContainer p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .inputContainer {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .inputSlider {
+    width: 80%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px;
+    background: #ddd;
+    border-radius: 6px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  
+  .inputSlider:hover {
+    opacity: 1;
+  }
+  
+  .inputSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .inputSlider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    background: #007bff;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .buttonContainer {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 50%;
+  }
+  
+  .nextButton, .skipButton {
+    background: linear-gradient(to right, rgb(163, 145, 241), rgb(102, 71, 240));
+    color: white;
+    width: 90%;
+    padding: 10px 0;
+    border-radius: 7px;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .nextButton:hover, .skipButton:hover {
+    background-color: #0056b3;
+  }
+  

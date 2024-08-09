@@ -21,6 +21,33 @@
     margin: auto;
     width: 100%;
 }
+.customerOrDoctorButtonContainer {
+    width: 70%;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 999rem;
+    
+}
+.active {
+    background-color: rgb(204, 195, 255);
+    color: rgb(87, 7, 80);
+}
+
+.inactive {
+    background-color: transparent;
+    color: rgb(161, 131, 251);
+}
+.customerOrDoctorButtonContainer button {
+    padding: 10px 10px;
+    width: 100%;
+    border-radius: 999rem;
+    border: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .form {
     display: flex;
@@ -71,6 +98,26 @@
     border: none;
     cursor: pointer;
 }
+.rememberMeContainer {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .rememberMeContainer input[type="checkbox"] {
+    margin-right: 94%;
+    
+  }
+  .rememberMeContainer p{
+    margin-right: 85px;
+    font-size: 85%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+  }
+  .rememberMeContainer a{
+    position: absolute;
+    margin-left: 160px;
+    color: rgb(92, 62, 229);
+  }
 
 .loginButtonContainer {
     align-items: center;

@@ -1,25 +1,29 @@
 
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import { useRouter } from 'next/router';
 import { IoEyeOffOutline } from "react-icons/io5";
 import { IoEyeOutline } from "react-icons/io5";
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import classes from "@/styles/signup.module.css"
 import Link from 'next/link';
+import axios from '@/pages/api/axios';
+import AuthContext from '@/context/AuthContext';
 
 export default function SignupPage() {
 
     const [user, setUser] = useState('customer');
     const [showPassword, setShowPassword] = useState(false);
-    const [formData, setformData] = useState({ userName: "", email: "", phoneNumber: "", password: "" });
+    const [formData, setformData] = useState({ name: "", email: "", phone_number: "", password_hash: "" });
     const [disable, setDisable] = useState(false)
     const [error, setError] = useState("");
+    const router = useRouter()
+    const {userAuth, setUserAuth} = useContext(AuthContext)
 
 
     const handleUserType = (e) => {
         setUser(e.target.name);
-        setformData({ userName: "", email: "", phoneNumber: "", password: "" })
+        setformData({ name: "", email: "", phone_number: "", password_hash: "" })
     }
 
     const handleChange = (e) => {
@@ -28,22 +32,59 @@ export default function SignupPage() {
     }
 
     const handlePhoneChange = (phone) => {
-        setformData({ ...formData, phoneNumber: phone });
+        setformData({ ...formData, phone_number: phone });
     }
 
     const handleTermsAndContions = (e) => {
         setDisable(e.target.checked);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if (!formData.userName || !formData.email || !formData.password || !formData.phoneNumber) {
-            setError("Invalid information!")
-        }
-        else {
-            console.log({ userType: user, ...formData })
+        if(!formData.name || !formData.email || !formData.password_hash || !formData.phone_number){
+            setError("Invalid informations!")
+        }else{
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
+            let passwordText = passwordRegex.test(formData.password_hash)
+            if(!passwordText){
+                setError("Password must be at least 8 characters long and contain a lowercase letter, an uppercase letter, and a digit")
+            }else{
+                try{
+                    const res = await axios.post("register/",{account_type:user,...formData})
+                    console.log(res.data);
+                    if(res.status===201){
+    
+                        setUserAuth(res.data)
+                        router.push('congratulation')
+                    }
+                }catch(error){
+                    if(error?.response?.data?.email){
+                        setError("User with this email already exists.")
+                    }
+                    else if(error?.response?.data?.phone_number){
+                        setError("User with this phone number already exists.")
+                    }
+                    else{
+                        setError(error.message)
+                    }
+                }
+            }
         }
     }
+
+    // useEffect(()=>{
+    //     const fetchData = async ()=>{
+    //         try{
+    //             const res = await fetch('http://127.0.0.1:8000/users/')
+    //             const data = await res.json()
+    //             console.log(data.results)
+    //         }catch(error){
+    //             console.log("ERROR :--",error)
+    //         }
+           
+    //     }
+    //     // fetchData();
+    // },[])
 
     const handleGoogleSignup = () => {
         window.location.href = "https://accounts.google.com/signup";
@@ -57,7 +98,7 @@ export default function SignupPage() {
         <div className={classes.pageContainer}>
             <main className={classes.main}>
 
-                <h1>Sign in</h1>
+                <h1>Sign up</h1>
 
                 <div className={classes.customerOrDoctorButtonContainer}>
                     <button type='button' name='customer' onClick={handleUserType} className={user === 'customer' ? classes.active : classes.inactive}>Customer</button>
@@ -69,7 +110,7 @@ export default function SignupPage() {
                         <label>
                             Your Name
                         </label>
-                        <input type='text' name='userName' required onChange={handleChange} value={formData.userName}></input>
+                        <input type='text' name='name' required onChange={handleChange} value={formData.name}></input>
                     </div>
                     <div className={classes.formDiv}>
                         <label>
@@ -83,7 +124,7 @@ export default function SignupPage() {
                         </label>
                         <PhoneInput
                             country={'us'}
-                            value={formData.phoneNumber}
+                            value={formData.phone_number}
                             onChange={handlePhoneChange}
                         />
                     </div>
@@ -94,7 +135,7 @@ export default function SignupPage() {
 
                         <div className={classes.passwordContainer}>
 
-                            <input type={showPassword ? 'text' : 'password'} value={formData.password} onChange={handleChange} name='password'></input>
+                            <input type={showPassword ? 'text' : 'password'} value={formData.password_hash} onChange={handleChange} name='password_hash'></input>
                             <button type='button' onClick={() => setShowPassword(!showPassword)}><>{showPassword === true ? <IoEyeOutline size={20} /> : <IoEyeOffOutline size={20} />}</></button>
 
                         </div>
